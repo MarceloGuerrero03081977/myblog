@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}Inicio — Mi Blog{% endblock %}
+
+{% block content %}
+<!-- Hero -->
+<div class="p-5 mb-4 bg-dark text-white rounded-3 text-center">
+    <h1 class="display-4 fw-bold">Bienvenido a Mi Blog</h1>
+    <p class="lead">Un espacio para compartir ideas, reflexiones y más.</p>
+    <a href="{% url 'page_list' %}" class="btn btn-primary btn-lg me-2">Ver páginas</a>
+    <a href="{% url 'about' %}" class="btn btn-outline-light btn-lg">Acerca de mí</a>
+</div>
+
+<!-- Últimas páginas -->
+<h2 class="mb-4">Últimas publicaciones</h2>
+
+{% if latest_pages %}
+<div class="row g-4">
+    {% for page in latest_pages %}
+    <div class="col-md-4">
+        <div class="card h-100 shadow-sm">
+            {% if page.image %}
+            <img src="{{ page.image.url }}" class="card-img-top" alt="{{ page.title }}" style="height:200px; object-fit:cover;">
+            {% else %}
+            <div class="card-img-top bg-secondary d-flex align-items-center justify-content-center" style="height:200px;">
+                <i class="bi bi-image text-white" style="font-size:3rem;"></i>
+            </div>
+            {% endif %}
+            <div class="card-body">
+                <h5 class="card-title">{{ page.title }}</h5>
+                <p class="card-text text-muted">{{ page.subtitle }}</p>
+                <small class="text-muted"><i class="bi bi-calendar"></i> {{ page.created_at }}</small>
+            </div>
+            <div class="card-footer bg-transparent">
+                <a href="{% url 'page_detail' page.pk %}" class="btn btn-sm btn-primary">Leer más</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+<div class="text-center mt-4">
+    <a href="{% url 'page_list' %}" class="btn btn-outline-primary">Ver todas las páginas</a>
+</div>
+{% else %}
+<div class="alert alert-info">No hay páginas aún. ¡Sé el primero en publicar!</div>
+{% endif %}
+{% endblock %}

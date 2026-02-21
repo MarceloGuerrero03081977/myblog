@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}Acerca de mí{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card shadow">
+            <div class="card-body p-5 text-center">
+                <div class="mb-4">
+                    <i class="bi bi-person-circle" style="font-size:5rem; color:#6c757d;"></i>
+                </div>
+                <h1 class="display-5 fw-bold">Hola, soy el autor del blog</h1>
+                <p class="lead text-muted">Desarrollador apasionado por la tecnología y el aprendizaje continuo.</p>
+                <hr>
+                <p>
+                    Este blog fue creado con <strong>Django</strong> como proyecto final del curso.
+                    Aquí comparto mis ideas, aprendizajes y proyectos. Me interesa el desarrollo web,
+                    la programación en Python, y todo lo relacionado con la tecnología.
+                </p>
+                <p>
+                    Si quieres ponerte en contacto, puedes enviarme un mensaje desde la sección de mensajería
+                    (necesitas estar registrado).
+                </p>
+                <div class="mt-4">
+                    <a href="{% url 'page_list' %}" class="btn btn-primary me-2">Ver mis publicaciones</a>
+                    {% if user.is_authenticated %}
+                    <a href="{% url 'inbox' %}" class="btn btn-outline-secondary">Enviarme un mensaje</a>
+                    {% else %}
+                    <a href="{% url 'signup' %}" class="btn btn-outline-secondary">Registrarse</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

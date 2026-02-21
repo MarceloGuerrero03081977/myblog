@@ -1,0 +1,37 @@
+body {
+    background-color: #f8f9fa;
+}
+
+.navbar-brand {
+    font-size: 1.4rem;
+    letter-spacing: 1px;
+}
+
+.card {
+    border-radius: 12px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12) !important;
+}
+
+.page-content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.page-content {
+    font-size: 1.05rem;
+    line-height: 1.8;
+}
+
+footer {
+    margin-top: auto;
+}
+
+.hero-section {
+    background: linear-gradient(135deg, #1a1a2e, #16213e);
+}
